@@ -11,10 +11,10 @@ const io = socketio(8081);
 app.use('/tail', express.static('public'));
 
 // listen to requests
-app.listen(port, () => console.info(`server started on port ${port} (${env})`));
+app.listen(6789, () => console.info(`server started on port ${port} (${env})`));
 
 // file name that should be watched
-const file = '~/logs/app.log';
+const file = './logs/app.log';
 
 io.of('tail').on('connection', (socket) => {
   fs.watchFile(file, () => {
